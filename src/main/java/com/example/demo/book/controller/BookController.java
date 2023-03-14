@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,31 +20,32 @@ import com.example.demo.book.service.BookService;
 
 @RestController
 @Validated
+@RequestMapping("/books")
 public class BookController {
 	@Autowired
 	BookService service;
 	
-	@GetMapping("/books")
+	@GetMapping("")
 	List<Book> findAll(){
 		return service.findAll();
 	}
 	
 	@ResponseStatus(HttpStatus.CREATED)
-	@PostMapping("/books")
+	@PostMapping("")
 	Book newBook(@RequestBody Book newBook) {
 		return service.newBook(newBook);
 	}
-	@PutMapping("/books/{id}")
+	@PutMapping("/{id}")
 	Book update(@RequestBody Book newBook, @PathVariable Long id) {
 		return service.update(newBook, id);
 	}
 	
-	@GetMapping("/books/{id}")
+	@GetMapping("/{id}")
 	Book findOne(@PathVariable Long id) {
 		return service.findOne(id);
 	}
 	
-	@DeleteMapping("/books/{id}")
+	@DeleteMapping("/{id}")
 	void deleteBook(@PathVariable Long id) {
 		service.deleteBook(id);
 	}

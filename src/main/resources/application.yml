@@ -1,0 +1,22 @@
+spring:
+  h2:
+    console:
+      enabled: 'true'
+  datasource:
+    url: jdbc:h2:file:./data/user
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    show-sql: false
+server:
+  error:
+    include-stacktrace: on_param
+
+# App Properties
+app:
+  jwtSecret: bezKoderSecretKey
+  jwtExpirationMs: 86400000

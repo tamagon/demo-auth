@@ -1,9 +1,16 @@
 package com.example.demo.auth.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.auth.model.ERole;
 import com.example.demo.auth.model.Role;
 
-public interface RoleRepository extends JpaRepository<Role, Long>{
 
+
+@Repository
+public interface RoleRepository extends JpaRepository<Role, Long> {
+  Optional<Role> findByName(ERole name);
 }
